@@ -1,0 +1,91 @@
+% :::::: I - Introduction ::::::::::::::::::
+\section{Introduction}
+% no \IEEEPARstart
+% Motivation Paragraph
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Show the importance of the problem you are addressing here by giving real-world applications that can benefit from this work.
+Handwriting recognition is the ability of a computer to retrieve and interpret handwriting input from sources such as paper documents, photographs, touch-screens and other devices. It is a classic machine learning problem, and the ideas have been applied to computer vision, speech, natural language processing, and other domains~\cite{dean2010mapreduce, gillick2006mapreduce}. For example, digit recognition has been employed regularly by the post office since the 1960s for the purposes of classifying mailing addresses using Optical Character Recognition (OCR) \cite{usps}. % Add reference to:
+% https://about.usps.com/publications/pub100/pub100_042.htm
+
+
+% Problem Paragraph
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Short description for the problem/area of research you are handling in this paper.
+% This paragraph should start with "In this paper, we"
+In this paper, we investigate the digit recognition problem using a deep learning approach that is implemented using a distributed computing model to improve the efficiency. 
+
+A widely used and recognized method to solve such problems is the neural network (NN). We decided to implement a modern deep learning model, choosing to use a convolutional neural network (CNN). In machine learning, a CNN is a type of feed-forward artificial neural network, whose individual neurons are arranged in a unique way such that they respond to overlapping regions tiling the visual field. CNNs, inspired by biological processes, are variations of multilayer perceptrons (MLPs) that consist of multiple layers of small neuron collections which process portions of the input image. Memory reduction and improved classification performance can be achieved by using CNNs because of the shared weight in the convolutional layers, allowing the same filter to be used for each pixel in the layer \cite{lecun1995comparison}. Compared to other image classification algorithms, CNNs use relatively little pre-processing. The network itself is responsible for learning the previously hand-engineered filters. The lack of dependence on prior knowledge and human effort in designing features is another major advantage for CNNs. Due to its many advantages, it is not surprising that  CNNs, as an advanced deep learning technology, have wide applications in many domain areas.
+
+
+%Challenges Paragraph
+% show why this problem is not trivial. For instances, the number and nature of parameters you are trying to consider,
+However, besides good performance, convolutional computation is generally very costly in terms of time, which is intolerable in some conditions. For example, if we add more than one convolution layer and set plenty of neurons for each fully-connected layer, the training process then becomes pretty time-consuming and with limited computation resources, it is not that trivial to solve this problem anymore.
+Algorithms in general are expected to find a balance between performance and time cost. A fast but inaccurate performance is equally undesirable as a slow but accurate performance. CNN, along with many other well known algorithms, such as Deep Neural Network (DNN) and Recurrent Neural Network (RNN), are forced to deal with time performance optimization.
+For CNN in particular, this dilemma is made worse not only from CNN's construction, but also from the large scale of input data used. More training data is sure to provide the network with more information however this also increases the chance to exhaust resources.
+
+%Limitation of existing work Paragraph
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Mention few examples of the most related work from the existing ones.
+% Explicitly list the limitations and drawbacks of them as groups or one by one.
+Much work focusing on handwritten digit recognition with large datasets have used neural networks \cite{sun2015large} due to the expensive computation feature of CNN. Neural networks are expected to generate satisfying results on normal dataset. However, with elastic distortion, one kind of noise common in handwritten image, CNN is necessary to preserve accuracy. 
+So far much research has been done in order to improve the efficiency. In one recent paper \cite{sun2015large}, they have tried to implement the Neural Network by MapReduce. Other research has been done using a parallel computing method, such as GPU-based computation, and multi-processes computation.  
+
+% Above paragraph is a rewriting of the below commented-out paragraph:
+% Therefore, work focusing on the cost of Handwriting digit recognition are ANN-based \cite{sun2015large} due to the expensive computation feature of CNN. ANN is expected to generate satisfying results on normal dataset. However, with elastic distortion, one kind of noise common in handwritten image, CNN is necessary to preserve accuracy. 
+% So far much research has been done in order to improve the efficiency. In one recent paper \cite{sun2015large}, they have tried to implement the Neural Network by MapReduce. Other research has been done using a parallel computing method, such as GPU-based computation, and multi-processes computation.  
+
+%%Our approach, Paragraph 1
+% Here, you describe the main idea of your solution
+% Our proposed solution includes using a distributed computing model to reduce the time cost. 
+Our proposed solution focuses on tackling the time cost limitation of CNN by using distributed computing; the data is distributed across machines in a Map phase, then weights are combined to formulate the final model in the Reduce phase. MapReduce is a straightforward programming framework tool for implementation of distribution computation. 
+% DON'T THINK THE FOLLOWING SENTENCE IS HELPFUL. REMOVED.
+%In one solution, we map the input dataset to an individual machine, and each worker (machine) would carry out the training process simultaneously. In the second solution, we reduce all the training model to one by appropriately combining the weight parameters all together.
+
+%%Our approach, Paragraph 2
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Here, you list the promises and advantages of your solution over the existing one.
+% remember, at least the limitations you mentioned above should be clearly handled here plus other features 
+% (if any). You might refer to some interesting result from your experimental evaluation, e.g., our system is 
+% 2X faster/accurate/less-memory than solution Y in ~\cite{referenceY}.
+% you might also refer to your cost analysis, (if exists),. e.g., our solution costs logn while the best 
+% existing one~\cite{Some-Reference} costs nlogn
+First, we succeed in implementing the CNN model with elastic distortion. The distortion helps the training process to better capture the feature of the image dataset, which results in a higher accuracy in total. In practice, the elastic distortion is very common in the handwritten digit images, so our implementation here builds a helpful application.
+Second, the most improvement of our research is to use distributed computing method to do the training process in CNN, which gives a more efficient way to use the application. Based on our experiment, our model reduces the computation time by about 50\%, and the efficiency varies by different number of machine processes we use.
+
+%%Our approach, Paragraph 3
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Describe how your solution work. This description should be able to justify the advantages you just mentioned in the previous Paragraph
+Now, we talk about why the distributed training processes would result in one valid model. In CNN, the gradient descent method is used to update the parameters each time. In other words, with each training iteration the direction that mostly optimizes the training data is calculated and the new parameters are moved towards that direction. 
+Thus the direction from the initial parameters to the final one is equivalent to a combination of a series of vectors. With distributed computing, we decompose the vectors at the initial point, and they are combined together after the distributed computing is finished, and the final weights are not change with or without the distribution. 
+%The mathematical proof is given in the following section, and we will discuss the detail later.
+
+%%Our approach Paragraph 4
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Here, you might talk about your optimized version, if any, and/or the parameters/assumptions to control your solution.
+The first kind of parameter is the number of layers in the neural networks, we try different values to see how it influences the efficiency on distributed computing. The second kind of parameter is how many distributed machines we use, since this also affects the efficiency due to the data communication between machines.
+
+
+%%Our Contribution list
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%The main contributions of our work are:
+%\begin{itemize}\itemsep-1pt \parskip-1pt
+%\parsep-1pt
+%\item We propose the {\em W} solution  that .
+%\item We introduce...
+%\item We study...
+%\item We provide a cost analysis
+%\item We conduct an intensive empirical evaluation on real and synthetic data sets to study the performance/accuracy/scalability/usability etc.
+%\end{itemize}
+In this research, we propose a method to improve the efficiency of CNN model based on distributed computation. Towards that end we carried out empirical analysis on the effects of changing different computing machines and different layers in neural networks. Our result shows that this method can indeed reduce the time cost while the accuracy remains at a reasonable level.
+
+% Paper Organization Paragraph
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%The rest of the paper is organized as follows.
+%The study of related work is given in Section~\ref{sect:related}.
+%Section~\ref{sect:preliminaries} sets the preliminaries.
+%Part G is detailed in Section~\ref{g}
+%The {\em W} system is experimentally evaluated in Section~\ref{sec:experiments}.
+%Finally, Section~\ref{sect:conclusion} concludes the paper.
+In the following sections, we first review typical classification algorithms which have been previously used to classify handwritten digit numbers and how distributed computing helps reduce execution time (Section \ref{RelWork}). After that, we clarify the problems we are focusing on and present the outline of our solutions (Section \ref{Preliminaries}). Then, we explain our proposed solution, the CNN classification algorithm with distributed computing, in detail (Section \ref{Proposed Solution}). After that, our experimental design and comparative results are presented (Section \ref{Evaluation}). Finally, we conclude the paper in Section \ref{Conclusion}. 
+
+% ======= END OF SECTION =======

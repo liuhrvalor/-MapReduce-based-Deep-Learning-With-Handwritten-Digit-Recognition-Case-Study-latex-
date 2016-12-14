@@ -1,0 +1,34 @@
+
+
+% :::::: II - Related Work ::::::::::::::::::
+\section{Related Work}
+\label{RelWork}
+%%%%%%%%%%%%%%%%% KNN
+
+Stephen J. Smith and his team~\cite{smith1994handwritten} built a simple statistical technique and a large training database to automatically optimize to produce high classification accuracy in the domain of handwritten digits.  Three distance metrics for the standard Nearest Neighbor classification system are investigated: a simple Hamming distance metric, a pixel distance metric, and a metric based on the extraction of features. 
+
+%Systems employing these metrics were trained and tested on a standard, publicly available, database of nearly 225,000 digits provided by the National Institute of Standards and Technology. Additionally, a confidence metric is both introduced by the authors and also discovered and optimized by the system. The new confidence measure proves to be superior to the commonly used Nearest Neighbor distance.
+%
+%A KNN-SVM Hybrid Model for Cursive Handwriting Recognition 
+
+The authors in \cite{zanchettin2012knn} present a hybrid KNN-SVM method for cursive character recognition. Specialized Support Vector Machines (SVMs) are introduced to significantly improve the performance of KNN in handwritten recognition. This hybrid approach is based on the observation that when using KNN in the task of handwritten characters recognition, the correct class is almost always one of the two nearest neighbors of the KNN. Specialized local SVMs are introduced to detect the correct class among these two different classification hypotheses. The hybrid KNN-SVM recognizer showed significant improvement in terms of recognition rate compared with MLP, KNN and a hybrid MLP-SVM approach for a task of character recognition.
+
+%%%%%%%%%%%%%%%% CNN 
+%The reason why handwritten digit recognition \cite{dean2010mapreduce} is still an important area is due to its vast practical applications and financial implications. The industry requires a decent recognition rate with the highest reliability \cite{gillick2006mapreduce}. Higher recognition rate on handwritten digits increases the recognition accuracy for handwritten data, which usually exist in numeral strings.
+
+XiaoXiao Niu and Ching Y. Suen \cite{niu2012novel} designed a hybrid CNN –SVM model for handwritten digit recognition \cite{hall2010mapreduce}. This model automatically retrieves
+features based on the CNN architecture, and recognizes the unknown pattern using the SVM recognizer. High reliabilities of the proposed systems have been achieved by a rejection rule. 
+%To verify the feasibility of our methodology, the well-known MNIST digit database is tested.
+
+On Handwritten digit recognition by neural networks with single-layer training \cite{knerr1992handwritten}, S. Knerr and team demonstrate that neural network classifiers with single layer training can be used efficiently to complex real-world classification problems such as the recognition of handwritten digits. They introduce the STEPNET procedure, which decomposes the problem into simpler sub-problems which can be solved by linear separators. They present results from two different data bases: a European database comprising 8700 isolated digits, and a zip code database from the U.S. Postal Service comprising 9000 segmented digits. Finally, they show that their network, resulting from the STEPNET building and training procedure and using an appropriate data representation, leads to very satisfactory recognition rates on two moderately sized data bases of handwritten digits.
+
+Y. LeCun and his team, on Backpropagation Applied to Handwritten Zip Code Recognition \cite{lecun1989backpropagation}, states that the ability of learning networks to generalize can be greatly enhanced by providing constraints from the task domain. 
+They demonstrate how such constraints can be integrated into a backpropagation network through the architecture of the network. 
+%In their paper, they apply the backpropagation algorithm  to a real-world problem in recognizing handwritten digits. They found,  unlike previous results reported by our group on this problem, the learning network is directly fed with images, rather than feature vectors, thus demonstrating the ability of backpropagation networks to deal with large amounts of low-level information.
+
+% Re-writing last paragraph:
+Most of the work reviewed did not introduce elastic distortion to the original data set. We decided to integrate this idea into our research and found that our final results were improved (in therms of accuracy.) Furthermore, most of the work reviewed on handwritten digit recognition did not use the MapReduce paradigm. We successfully used Hadoop to improve our training efficiency without losing accuracy.
+
+% However, most of the work in this group do not introduce elastic distortion to original data set. However, through our test,  we integrate this part into our research, and find that approach indeed improve our final result. Besides, most of paper on handwritten digit recognition does not use the MapReduce method. We try to use Hadoop to make our learning process more efficient without losing the accuracy.
+
+% ======= END OF SECTION =======

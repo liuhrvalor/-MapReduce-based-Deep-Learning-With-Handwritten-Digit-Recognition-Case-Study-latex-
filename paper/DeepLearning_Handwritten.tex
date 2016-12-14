@@ -1,0 +1,66 @@
+%% IEEEBigData.tex
+%% 
+\documentclass[conference]{IEEEtran}
+% *** FOR ALGORITHM FORMATTING ***
+\usepackage{clrscode}
+% *** GRAPHICS RELATED PACKAGES ***
+\usepackage{graphicx}
+\usepackage{subfigure}
+% *** MATH PACKAGES ***
+\usepackage{amsmath}
+\usepackage{algorithmic}
+\usepackage{algorithm}
+\usepackage[hyphens]{url}
+\usepackage{hyperref}
+%\usepackage[breaklinks]{hyperref}
+\usepackage{breakurl}
+
+
+\begin{document}
+\title{MapReduce-based Deep Learning With Handwritten Digit Recognition Case Study}
+% Old title:
+%  \title{Large-scale Neural Network: MapReduce-based Deep Learning}
+% author names and affiliations
+% use a multiple column layout for up to three different
+% affiliations
+\author{
+Nada Basit\hspace*{0.07in}
+Yutong Zhang\hspace*{0.07in}
+Hao Wu\hspace*{0.07in}
+Haoran Liu\hspace*{0.07in}\\
+Jieming Bin\hspace*{0.07in}
+Abdeltawab Hendawi\hspace*{0.07in}
+Yijun He\hspace*{0.07in}
+\\~\\
+\fontsize{10}{10}\selectfont\ttfamily\upshape
+University of Virginia, VA, USA\\
+\fontsize{9}{9}\selectfont\ttfamily\itshape
+$\{basit, yz5rv, hw6ca, hl4fb, jb5ej, hendawi, yh9vm\}@virginia.edu$
+\\~\\
+}
+
+% make the title area
+\maketitle
+
+
+\input{"abstract"}
+\input{"introduction"}
+\input{"related"}
+\input{"preliminaries"}
+\input{proposed_solution}
+\input{"experiments"}
+\input{"conclusion"}
+
+
+
+
+\bibliographystyle{abbrv}
+% \footnotesize
+%\bibliographystyle{plain}
+%\bibliographystyle{abbrv}
+\bibliography{References}
+
+% That's all folks!
+\end{document}
+
+
